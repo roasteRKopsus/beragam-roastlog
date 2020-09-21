@@ -349,8 +349,8 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 		'lead_time',
 		'umur_blend',)
 
-	readonly_fields = (
-	'id',)
+	# readonly_fields = (
+	# 'id',)
 	search_fields = (
 		'tanggal_blend',
 		'jenis_blend'
@@ -371,7 +371,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	exclude = ['cupping', 'qc_check_pass', 'taste_notes', 'pack_status', 'catatan_qc']
 
 
-	list_editable = [
+	list_editable = ['roast_date',
 	'agtron_meter', 
 	'taste_notes',
 	'production_check_pass', 
@@ -397,7 +397,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	}
 	filter_horizontal = ('roasted_material',)
 
-	list_display_links = None 
+	# list_display_links = None 
 	resource_class = ProductionDivResource
 
 
