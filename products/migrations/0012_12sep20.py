@@ -22,3 +22,5 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(limit_choices_to={'show_this': False}, on_delete=django.db.models.deletion.CASCADE, to='products.BeansGudang'),# ini diganti loh jadi false
         ),
     ]
+
+#done updated 16 sep 20

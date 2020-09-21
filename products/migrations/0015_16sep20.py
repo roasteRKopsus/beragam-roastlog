@@ -16,3 +16,4 @@ class Migration(migrations.Migration):
             field=models.BooleanField(default=False),
         ),
     ]
+#done updated 16 sep 20
