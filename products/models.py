@@ -184,7 +184,7 @@ class BeansGudang(models.Model):
 		roasted_list = Roaster.objects.filter(beans_name=self)
 		avg_dep = 0
 		for roasted in roasted_list:
-			average_depreciation = round((roasted.raw - roasted.roasted)/roasted.raw*100,2)
+			average_depreciation = round((roasted.raw - roasted.roasted)/(roasted.raw+0.0001)*100,2)
 			avg_dep += average_depreciation
 		value = round(float(avg_dep)/ (len(roasted_list)+0.0001),2)
 		return "{0}\t%".format(value)
