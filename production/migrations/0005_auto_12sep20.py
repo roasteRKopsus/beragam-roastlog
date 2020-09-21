@@ -35,3 +35,4 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(limit_choices_to={'production_date': datetime.date(2020, 9, 12)}, on_delete=django.db.models.deletion.CASCADE, to='production.BlendReport'),
         ),
     ]
+#done updated 16 sep 20

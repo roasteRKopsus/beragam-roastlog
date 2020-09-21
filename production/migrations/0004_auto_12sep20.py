@@ -29,3 +29,4 @@ class Migration(migrations.Migration):
             field=models.ManyToManyField(to='products.Roaster'),
         ),
     ]
+#done updated 16 sep 20
