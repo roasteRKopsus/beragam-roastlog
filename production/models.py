@@ -11,8 +11,10 @@ import pytz
 datetimex = datetime.now()
 
 jakarta_time = pytz.timezone("Asia/Jakarta")
-
+# this part so confusing
 date = date.today()
+time_delta = timedelta(hours=12)
+date+=time_delta
 STATUS_NOW = [('p','pending'),('c','confirmed')]
 
 class KomposisiBean(models.Model):
