@@ -16,6 +16,8 @@ from datetime import date
 from production.admin import RoastedMaterialInline
 
 today = datetime.date.today()
+time_delta = timedelta(hours=12)
+today+=time_delta
 
 
 class BeansCodeResource(resources.ModelResource):
@@ -305,7 +307,7 @@ class BlendNameAdmin(ExportActionMixin, admin.ModelAdmin):
 		'week_4','week_5','latest','deficiency','monthly_target')
 	list_filter = ('blend_name', 'periode' )
 
-	list_editable = ['show_this']
+	list_editable = ['show_this', 'monthly_target']
 
 
 class RoasterNameAdmin(ExportActionMixin, admin.ModelAdmin):

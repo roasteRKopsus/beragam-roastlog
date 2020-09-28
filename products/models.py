@@ -380,7 +380,7 @@ class Roaster(models.Model):
 	warna_biji = (('wajar','wajar'), ('tidak wajar', 'tidak wajar'))
 	masuk= (('Pagi','Pagi'),('Siang', 'Siang'))
 	roast_date = models.DateField(auto_now_add=True)
-	beans_name = models.ForeignKey(BeansGudang, on_delete=models.CASCADE)
+	beans_name = models.ForeignKey(BeansGudang, on_delete=models.CASCADE, limit_choices_to={'show_this': True})
 	minggu = models.CharField(max_length=1, choices=week, default='1', help_text='SERING TERJADI KESALAHAN MOHON DIPERHATIKAN')
 	roastcode = models.CharField(max_length=20, default='-')
 	blend_name = models.ForeignKey(BlendName, on_delete=models.PROTECT, default=1, limit_choices_to = {'show_this' : True}) #limit choices
