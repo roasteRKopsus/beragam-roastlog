@@ -360,7 +360,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 		('initial_create',PastDateRangeFilter),
 		('roast_date', PastDateRangeFilter),
 		'production_date__blend_name_bulanan__blend_name',
-		'mesin',
+		('mesin', RelatedDropdownFilter),
 		('komposisi', RelatedDropdownFilter),
 		'roasted_material__roaster',
 		'cupping',
@@ -379,6 +379,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	'qc_check_pass', 
 	'pack_status',
 	'catatan_qc',
+	'komposisi',
 	]
 
 	list_max_show_all = 2500
@@ -431,7 +432,7 @@ class BlendReportAdmin(ExportActionMixin, admin.ModelAdmin):
 	'blend_recorded',
 	'total_weight','uom',
 	'pack_size',
-	# 'perkiraan_jumlah_pack', #fix this !!!!
+	'perkiraan_jumlah_pack', #fix this !!!!
 	'catatan_laporan',
 	'agtron_avg',]
 
@@ -582,6 +583,7 @@ class KejadianAdmin(ExportActionMixin, admin.ModelAdmin):
 	list_display = (
 		'tanggal',
 		'reporter',
+		'divisi',
 		'tingkat_urgensi',
 		'kronologi',
 		'resolusi' 
@@ -590,9 +592,8 @@ class KejadianAdmin(ExportActionMixin, admin.ModelAdmin):
 	list_filter = (
 	('tanggal', PastDateRangeFilter),
 	'reporter',
+	'divisi',
 	'tingkat_urgensi',
-	'kronologi',
-	'resolusi' 
 )
 
 
