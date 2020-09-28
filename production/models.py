@@ -315,7 +315,7 @@ class ProductionDiv(models.Model):
 	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'production_date': date}  )
 	roast_date = models.DateField(default=date)
 	nomor_set = models.PositiveIntegerField(max_length=50,)
-	roasted_material = models.ManyToManyField(Roaster, limit_choices_to = Q(next_process=False))
+	roasted_material = models.ManyToManyField(Roaster)
 	komposisi = models.ForeignKey(KomposisiBean, on_delete=models.CASCADE,)
 	mesin = MultiSelectField(choices=mesin)
 	# shift = models.CharField(max_length=60, choices=masuk, default='')
@@ -541,9 +541,12 @@ class DisposalItem(models.Model):
 
 class Kejadian(models.Model):
 
+	bagian = (('G','GENERAL'), ('R','ROASTERY'), ('Q','QC'),('P','PRODUKSI'),('S','SYSTEM'))
+
 	jenis = (('B','Biasa'), ('M','Medium'),('P','Parah'),('R','Rutinitas'))
 	tanggal = models.DateTimeField()
 	reporter = models.CharField(max_length=15, default='-')
+	divisi = models.CharField(choices=bagian, default='G', max_length=1)
 	tingkat_urgensi = models.CharField(max_length=1, choices=jenis, default='B')
 	kronologi = models.TextField(max_length=300)
 	resolusi = models.TextField(max_length=300)
