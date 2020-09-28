@@ -13,6 +13,8 @@ import production
 
 
 date = datetime.date.today()
+time_delta = timedelta(hours=12)
+date+=time_delta
 monday = date - datetime.timedelta(days=date.weekday())
 datetimex = datetime.datetime.now()
 
