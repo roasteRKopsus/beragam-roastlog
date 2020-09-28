@@ -315,7 +315,7 @@ class ProductionDiv(models.Model):
 	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'production_date': date}  )
 	roast_date = models.DateField(default=date)
 	nomor_set = models.PositiveIntegerField(max_length=50,)
-	roasted_material = models.ManyToManyField(Roaster)
+	roasted_material = models.ManyToManyField(Roaster, limit_choices_to={'next_process':True})
 	komposisi = models.ForeignKey(KomposisiBean, on_delete=models.CASCADE,)
 	mesin = MultiSelectField(choices=mesin)
 	# shift = models.CharField(max_length=60, choices=masuk, default='')
