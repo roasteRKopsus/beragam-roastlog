@@ -268,7 +268,7 @@ class RoasterAdmin(ExportActionMixin, admin.ModelAdmin):
 	)
 
 
-	list_editable =['next_process']
+	list_editable =['next_process', 'blend_name']
 
 	exclude = ['next_process']
 
