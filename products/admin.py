@@ -53,7 +53,10 @@ class RoasterResource(resources.ModelResource):
 	raw = fields.Field(attribute='raw')
 	roasted = fields.Field(attribute='roasted')
 	persentase_susut = fields.Field(attribute='persentase_susut')
+	auto_check = fields.Field(attribute='auto_control_weight')
+	weight_params = fields.Field(attribute='weight_parameters')
 	roaster_pass_check = fields.Field(attribute='roaster_pass_check')
+	roaster_name = fields.Field(attribute='roaster_shift_name')
 	catatan_roaster = fields.Field(attribute='catatan_roaster')	
 	umur_roastbean = fields.Field(attribute='umur_roastbean')
 
