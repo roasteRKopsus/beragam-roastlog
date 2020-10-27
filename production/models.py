@@ -12,7 +12,7 @@ datetimex = datetime.now()
 
 jakarta_time = pytz.timezone("Asia/Jakarta")
 # this part so confusing
-time_delta = timedelta(hours=24)
+time_delta = timedelta(hours=19)
 date = date.today()
 date+=time_delta
 STATUS_NOW = [('p','pending'),('c','confirmed')]
