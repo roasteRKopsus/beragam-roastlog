@@ -30,7 +30,7 @@ week = (('1','1'), ('2','2'),('3','3'),('4','4'),('5','5'))
 daily_blend = []
 
 
-default_client = 'default_client'
+default_client = 1
 
 class ClientName(models.Model):
 	client_code = models.CharField(max_length=7, default='X')
