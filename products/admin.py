@@ -35,6 +35,13 @@ today+=time_delta
 # 	nilai_stock = fields.Field(attribute='nilai_stock')
 
 
+class ForeignMaterialItemInline(admin.StackedInline):
+
+
+	model = ForeignMaterialItem
+	extra=0
+
+
 class BeansCodeResource(resources.ModelResource):
 
 
@@ -371,6 +378,7 @@ class RoastErrorLogsAdmin(ExportActionMixin, admin.ModelAdmin):
 class ForeignMaterialReportAdmin(ExportActionMixin, admin.ModelAdmin):
 	list_display = ('created_date','shift', 'reporter')
 	list_filter = (('created_date',PastDateRangeFilter), 'reporter')
+	inlines = [ForeignMaterialItemInline]
 
 
 class ForeignMaterialItemAdmin(ExportActionMixin,admin.ModelAdmin):
@@ -387,6 +395,7 @@ admin.site.register(RoastErrorLogs, RoastErrorLogsAdmin)
 admin.site.register(ClientName, ClientNameAdmin)
 admin.site.register(ForeignMaterialReport, ForeignMaterialReportAdmin)
 admin.site.register(ForeignMaterialItem, ForeignMaterialItemAdmin)
+# admin.site.register(ForeignMaterialItem, ForeignMaterialItemAdmin)
 
 
 
