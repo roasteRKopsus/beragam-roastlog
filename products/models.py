@@ -42,7 +42,7 @@ class ClientName(models.Model):
 
 class BeansCode(models.Model):
 
-	client_name = models.ForeignKey(ClientName, default=default_client, on_delete= models.PROTECT)
+	# client_name = models.ForeignKey(ClientName, default=default_client, on_delete= models.PROTECT)
 	code = models.CharField(max_length=10, default='-')
 	beans_name = models.CharField(max_length=50)
 	jenis_kopi = models.CharField(max_length=10)
