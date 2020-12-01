@@ -30,9 +30,19 @@ week = (('1','1'), ('2','2'),('3','3'),('4','4'),('5','5'))
 daily_blend = []
 
 
+default_client = 'default_client'
+
+class ClientName(models.Model):
+	client_code = models.CharField(max_length=7, default='X')
+	client_name = models.CharField(max_length=30, default='-')
+	pic = models.CharField(max_length=30,default='-')
+	no_telp = models.CharField(max_length=30, default= '0')
+	alamat = models.CharField(max_length=90, default='-')
+
+
 class BeansCode(models.Model):
 
-
+	client_name = models.ForeignKey(ClientName, default=default_client, on_delete= models.PROTECT)
 	code = models.CharField(max_length=10, default='-')
 	beans_name = models.CharField(max_length=50)
 	jenis_kopi = models.CharField(max_length=10)
@@ -622,6 +632,28 @@ class OverheadItemForecast(models.Model):
 	jumlah_item = models.DecimalField(max_digits=7, decimal_places= 2, default=0)
 	total_pengeluaran = models.DecimalField(max_digits=11, decimal_places=2, default=0)
 	catatan = models.TextField(max_length=300, default='-')
+
+
+
+class ForeignMaterialReport(models.Model):
+	
+
+	masuk = (('P','PAGI'),('S','SIANG'),('M','MALAM'))
+	created_date = models.DateField(default=date)
+	shift = models.CharField(max_length=1, choices=masuk, default='-')
+	reporter = models.ForeignKey(RoasterName, on_delete=models.PROTECT)
+
+
+
+class ForeignMaterialItem(models.Model):
+
+	# parent_id = models.ForeignKey(FinancialForecast, on_delete=models.PROTECT)
+	created = models.ForeignKey(ForeignMaterialReport, on_delete=models.CASCADE) 
+	nama_item = models.ForeignKey(BeansGudang, on_delete=models.PROTECT)
+	berat = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+	jenis_FM = models.CharField(max_length=50,default='-')
+	catatan = models.TextField(max_length=300, default='-')
+
 
 
  

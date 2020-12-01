@@ -20,6 +20,21 @@ time_delta = timedelta(hours=12)
 today+=time_delta
 
 
+
+# class ClientNameResource(resources.ModelResource):
+
+
+# 	code = fields.Field(attribute='code')
+# 	beans_name = fields.Field(attribute='beans_name')
+# 	jenis_kopi = fields.Field(attribute='jenis_kopi')
+# 	variety = fields.Field(attribute='variety')
+# 	origin = fields.Field(attribute='origin')
+# 	paska_panen = fields.Field(attribute='paska_panen')
+# 	vendor_name = fields.Field(attribute='vendor_name')
+# 	stock_terupdate = fields.Field(attribute='stock_terupdate')
+# 	nilai_stock = fields.Field(attribute='nilai_stock')
+
+
 class BeansCodeResource(resources.ModelResource):
 
 
@@ -162,6 +177,23 @@ class BeansCodeAdmin(ExportActionMixin, admin.ModelAdmin):
 	)
 
 	resource_class = BeansCodeResource
+
+
+class ClientNameAdmin(ExportActionMixin, admin.ModelAdmin):
+	list_display = (
+		'client_code',
+		'client_name',
+		'pic',
+		'no_telp',
+		'alamat'
+		)
+
+	list_filter = (
+		'client_code',
+		'client_name',
+		'pic',
+		)
+
 
 
 class BeansGudangAdmin(ExportActionMixin, admin.ModelAdmin):
@@ -345,5 +377,6 @@ admin.site.register(PengambilanGreenbean, PengambilanGreenbeanAdmin)
 admin.site.register(BlendName, BlendNameAdmin)
 admin.site.register(RoasterName, RoasterNameAdmin)
 admin.site.register(RoastErrorLogs, RoastErrorLogsAdmin)
+admin.site.register(ClientName, ClientNameAdmin)
 
 
