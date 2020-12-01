@@ -368,6 +368,13 @@ class RoastErrorLogsAdmin(ExportActionMixin, admin.ModelAdmin):
 		'resolution')
 	list_filter = (('date_time', PastDateRangeFilter), 'machine')
 
+class ForeignMaterialReportAdmin(ExportActionMixin, admin.ModelAdmin):
+	list_display = ('created_date','shift', 'reporter')
+	list_filter = (('created_date',PastDateRangeFilter), 'reporter')
+
+
+class ForeignMaterialItemAdmin(ExportActionMixin,admin.ModelAdmin):
+	list_display = ('created', 'nama_item', 'berat')
 
 
 admin.site.register(BeansCode, BeansCodeAdmin)
@@ -378,5 +385,8 @@ admin.site.register(BlendName, BlendNameAdmin)
 admin.site.register(RoasterName, RoasterNameAdmin)
 admin.site.register(RoastErrorLogs, RoastErrorLogsAdmin)
 admin.site.register(ClientName, ClientNameAdmin)
+admin.site.register(ForeignMaterialReport, ForeignMaterialReportAdmin)
+admin.site.register(ForeignMaterialItem, ForeignMaterialItemAdmin)
+
 
 
