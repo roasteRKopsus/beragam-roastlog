@@ -33,16 +33,21 @@ daily_blend = []
 default_client = 1
 
 class ClientName(models.Model):
+	
+
 	client_code = models.CharField(max_length=7, default='X')
 	client_name = models.CharField(max_length=30, default='-')
 	pic = models.CharField(max_length=30,default='-')
 	no_telp = models.CharField(max_length=30, default= '0')
 	alamat = models.CharField(max_length=90, default='-')
 
+	def __str__(self):
+		return self.client_code
+
 
 class BeansCode(models.Model):
 
-	# client_name = models.ForeignKey(ClientName, default=default_client, on_delete= models.PROTECT)
+	client_name = models.ForeignKey(ClientName, default=default_client, on_delete= models.PROTECT)
 	code = models.CharField(max_length=10, default='-')
 	beans_name = models.CharField(max_length=50)
 	jenis_kopi = models.CharField(max_length=10)
@@ -144,6 +149,11 @@ class BeansGudang(models.Model):
 	defect = models.CharField(max_length=100, default='-')
 	cup_score = models.DecimalField(max_digits=3, decimal_places=1) # delete cup score into automatically calculate
 	recomendation = models.TextField(max_length=150, default='-') # add recomendation
+
+
+	def owner_client(self):
+		owner = self.sample_code
+		return owner.client_name
 
 	def stock_roasted(self):
 		roasted_list = Roaster.objects.filter(beans_name=self)
@@ -248,6 +258,7 @@ class BeansGudang(models.Model):
 	# final_cup_score = property(final_score)
 	last_update = property(time_update)
 	coffee_score = property (final_score)
+	owner = property (owner_client)
 
 	def __str__(self):
 		return self.beans_name

@@ -159,6 +159,7 @@ class BeansCodeAdmin(ExportActionMixin, admin.ModelAdmin):
 
 
 	'code',
+	'client_name',
 	'beans_name',
 	'jenis_kopi',
 	'variety',
@@ -210,6 +211,7 @@ class BeansGudangAdmin(ExportActionMixin, admin.ModelAdmin):
 		'sample_code',
 		'show_this',
 		'beans_name',
+		'owner',
 		'cup_score',
 		'stock_status',
 		'vendor_name',
