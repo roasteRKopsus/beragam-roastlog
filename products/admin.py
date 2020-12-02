@@ -184,6 +184,8 @@ class BeansCodeAdmin(ExportActionMixin, admin.ModelAdmin):
 
 	)
 
+	list_editable= ['client_name']
+
 	resource_class = BeansCodeResource
 
 
