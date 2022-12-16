@@ -6,7 +6,7 @@ import datetime
 from datetime import timedelta
 from django.db.models import Sum
 from django.db.models.signals import post_save
-import numpy as np
+
 from django.utils.html import format_html
 import production
 
