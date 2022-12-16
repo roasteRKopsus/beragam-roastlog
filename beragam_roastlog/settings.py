@@ -38,7 +38,7 @@ INSTALLED_APPS = [
 
     
 
-    'beragam_roastlog.apps.SuitConfig',
+    # 'beragam_roastlog.apps.SuitConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
