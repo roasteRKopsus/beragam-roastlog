@@ -382,7 +382,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	'komposisi',
 	]
 
-	list_max_show_all = 2500
+	list_max_show_all = 100
 	list_per_page = 20
 
 	# form = ProductionDivAdminForm
@@ -596,6 +596,10 @@ class KejadianAdmin(ExportActionMixin, admin.ModelAdmin):
 	'tingkat_urgensi',
 )
 
+class ConfigBlendPackingAdmin(ExportActionMixin, admin.ModelAdmin):
+
+	list_display = ('show_data_for', 'is_active', 'limit_choice_query')
+
 
 
 
@@ -613,3 +617,4 @@ admin.site.register(DaftarCustomer, DaftarCustomerAdmin)
 admin.site.register(DisposalReport, DisposalReportAdmin)
 admin.site.register(DisposalItem, DisposalItemAdmin)
 admin.site.register(Kejadian, KejadianAdmin)
+admin.site.register(ConfigBlendPacking, ConfigBlendPackingAdmin)

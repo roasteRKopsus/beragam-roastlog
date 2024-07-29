@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
+# 
+# SECRET_KEY = ('i!q7z0nve_mpf&zn7*4br12f*%)&kfdkd4%l72e$kq#9vjo3em')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+# DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+DEBUG = (True)
 
 ALLOWED_HOSTS = ['beragam-db.herokuapp.com']
 # 127.0.0.1

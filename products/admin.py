@@ -315,6 +315,8 @@ class RoasterAdmin(ExportActionMixin, admin.ModelAdmin):
 
 
 	list_editable =['next_process', 'blend_name']
+	list_max_show_all = 100
+	list_per_page = 20
 
 	exclude = ['next_process']
 

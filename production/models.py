@@ -17,6 +17,24 @@ date = date.today()
 date+=time_delta
 STATUS_NOW = [('p','pending'),('c','confirmed')]
 
+
+
+def blend_packing_config_choice():
+	today = date.today()
+	config_blend_packing = ConfigBlendPacking.objects.filter(is_active=True).values_list('limit_choice_query', flat=True)
+	print(config_blend_packing)
+	list_date = []
+	try:
+		for date_conf in config_blend_packing:
+			t_min = today - timedelta(days=date_conf)
+			print(t_min)
+			list_date.append(t_min)
+
+		return  {"roast_date__gte": list_date[0], "roast_date__lte": today}
+	except:
+		return {"roast_date__lte": today}
+
+
 class KomposisiBean(models.Model):
 
 
@@ -315,7 +333,7 @@ class ProductionDiv(models.Model):
 	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'production_date': date}  )
 	roast_date = models.DateField(default=date)
 	nomor_set = models.PositiveIntegerField(max_length=50,)
-	roasted_material = models.ManyToManyField(Roaster, limit_choices_to={'next_process':False})
+	roasted_material = models.ManyToManyField(Roaster,limit_choices_to=blend_packing_config_choice )
 	komposisi = models.ForeignKey(KomposisiBean, on_delete=models.CASCADE,)
 	mesin = MultiSelectField(choices=mesin)
 	# shift = models.CharField(max_length=60, choices=masuk, default='')
@@ -555,3 +573,10 @@ class Kejadian(models.Model):
 		verbose_name = 'Kejadian'
 		verbose_name_plural = 'Kejadian'
 	
+
+class ConfigBlendPacking (models.Model):
+
+	
+	show_data_for = models.CharField(max_length=20, default='-')
+	is_active = models.BooleanField(default=False)
+	limit_choice_query = models.IntegerField( default=1)
