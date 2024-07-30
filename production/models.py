@@ -248,7 +248,7 @@ class BlendReport(models.Model):
 		return len(data_input)
 
 	def total_weight (self):
-		sum_weight = ProductionDiv.objects.filter(blend_production_date=self)
+		sum_weight = ProductionDiv.objects.filter(production_date=self)
 		initial_weight = 0
 		for weight in sum_weight:
 			initial_weight += weight.weight
