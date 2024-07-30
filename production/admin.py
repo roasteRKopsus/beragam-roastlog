@@ -91,7 +91,7 @@ class ProductionDivResource(resources.ModelResource):
 class BlendReportResource(resources.ModelResource):
 
 
-	production_date= fields.Field(attribute='production_date',)
+	blend_production_date= fields.Field(attribute='blend_production_date',)
 	blend_id= fields.Field(attribute='blend_id',)
 	blend_name= fields.Field(attribute='blend_name',
 		column_name='blend_name',
@@ -422,7 +422,7 @@ class BlendReportAdmin(ExportActionMixin, admin.ModelAdmin):
 
 	list_display = [
 	'blend_id',
-	'production_date',
+	'blend_production_date',
 	'blend_name',
 	'input_by',
 	'blend_recorded',
@@ -432,7 +432,7 @@ class BlendReportAdmin(ExportActionMixin, admin.ModelAdmin):
 	'catatan_laporan',
 	'agtron_avg',]
 
-	list_filter = (('production_date', PastDateRangeFilter),
+	list_filter = (('blend_production_date', PastDateRangeFilter),
 	'blend_name',
 	'input_by',)
 
