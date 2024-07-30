@@ -20,19 +20,22 @@ STATUS_NOW = [('p','pending'),('c','confirmed')]
 
 
 def blend_packing_config_choice():
-	today = date.today()
-	config_blend_packing = ConfigBlendPacking.objects.filter(is_active=True).values_list('limit_choice_query', flat=True)
-	print(config_blend_packing)
-	list_date = []
 	try:
-		for date_conf in config_blend_packing:
-			t_min = today - timedelta(days=date_conf)
-			print(t_min)
-			list_date.append(t_min)
+		today = date.today()
+		config_blend_packing = ConfigBlendPacking.objects.filter(is_active=True).values_list('limit_choice_query', flat=True)
+		print(config_blend_packing)
+		list_date = []
+		try:
+			for date_conf in config_blend_packing:
+				t_min = today - timedelta(days=date_conf)
+				print(t_min)
+				list_date.append(t_min)
 
-		return  {"roast_date__gte": list_date[0], "roast_date__lte": today}
+			return  {"roast_date__gte": list_date[0], "roast_date__lte": today}
+		except:
+			return {"roast_date__lte": today}
 	except:
-		return {"roast_date__lte": today}
+		pass
 
 
 class KomposisiBean(models.Model):
