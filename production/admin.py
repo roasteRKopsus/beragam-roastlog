@@ -352,14 +352,13 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	# readonly_fields = (
 	# 'id',)
 	search_fields = (
-		'tanggal_blend',
-		'jenis_blend'
+		'production_date__blend_name_bulanan'
 	)
 	# list_editable = ['cupping']
 	list_filter = (
 		('initial_create',PastDateRangeFilter),
 		('roast_date', PastDateRangeFilter),
-		('production_date'),
+		'production_date',
 		# ('production_date__blend_name_bulanan__blend_name'),
 		'mesin',
 		'komposisi',
