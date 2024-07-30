@@ -358,7 +358,7 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	list_filter = (
 		('initial_create',PastDateRangeFilter),
 		('roast_date', PastDateRangeFilter),
-		'production_date__blend_name_bulanan',
+		('production_date__blend_name_bulanan', RelatedDropdownFilter),
 		# ('production_date__blend_name_bulanan__blend_name'),
 		'mesin',
 		'komposisi',
