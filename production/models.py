@@ -260,7 +260,7 @@ class BlendReport(models.Model):
 		return round(pack_forecast,2)
 
 	def agtron_average(self):
-		agtron_val = ProductionDiv.objects.filter(blend_production_date=self)
+		agtron_val = ProductionDiv.objects.filter(production_date=self)
 		agtron_avg = 0
 		for agtron in agtron_val:
 			agtron_avg += agtron.agtron_meter
