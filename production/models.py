@@ -20,6 +20,7 @@ STATUS_NOW = [('p','pending'),('c','confirmed')]
 
 
 def blend_packing_config_choice():
+	today = date.today()
 	try:
 		today = date.today()
 		config_blend_packing = ConfigBlendPacking.objects.filter(is_active=True).values_list('limit_choice_query', flat=True)
@@ -35,7 +36,7 @@ def blend_packing_config_choice():
 		except:
 			return {"roast_date__lte": today}
 	except:
-		pass
+		return {"roast_date__lte": today}
 
 
 class KomposisiBean(models.Model):
