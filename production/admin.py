@@ -359,7 +359,8 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 	list_filter = (
 		('initial_create',PastDateRangeFilter),
 		('roast_date', PastDateRangeFilter),
-		('production_date__blend_name_bulanan__blend_name', RelatedDropdownFilter),
+		('production_date', RelatedDropdownFilter),
+		('production_date__blend_name_bulanan__blend_name'),
 		'mesin',
 		'komposisi',
 		'roasted_material__roaster',
@@ -373,13 +374,8 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 
 	list_editable = ['roast_date',
 	'agtron_meter', 
-	'taste_notes',
-	'production_check_pass', 
-	'cupping', 
-	'qc_check_pass', 
+	'production_check_pass',  
 	'pack_status',
-	'catatan_qc',
-	'komposisi',
 	]
 
 	list_max_show_all = 100
