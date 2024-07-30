@@ -268,7 +268,7 @@ class BlendReport(models.Model):
 		return round(value, 2)
 
 	def blend_code(self):
-		return "{0}/{1}/{2}/{3}/{4}".format(self.blend_name,self.machine,self.shift,self.pack_size,self._blendproduction_date)
+		return "{0}/{1}/{2}/{3}/{4}".format(self.blend_name,self.machine,self.shift,self.pack_size,self.blend_production_date)
 
 	def readable_blend(self):
 		return ('{0} [{1}]'.format(self.blend_production_date, self.blend_name_bulanan))
