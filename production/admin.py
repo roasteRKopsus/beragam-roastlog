@@ -58,7 +58,7 @@ class ProductionDivResource(resources.ModelResource):
 	
 	production_date = fields.Field(
 		attribute='production_date',
-		column_name='production_date',
+		column_name='blend_production_date',
 		widget=ForeignKeyWidget(BlendReport, 'blend_production_date')
 		)
 
