@@ -399,21 +399,21 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 
 
 
-	def changelist_view(self, request, extra_context=None):
+	# def changelist_view(self, request, extra_context=None):
 
 
-		cup_task = ProductionDiv.objects.filter(cupping=False).count()
-		karantina_produksi = ProductionDiv.objects.filter(production_check_pass=False).count()
-		karantina_qc = ProductionDiv.objects.filter(qc_check_pass=False).count()
-		unpack_status = ProductionDiv.objects.filter(pack_status=False).count()
-		context = {
-		'cup_task': cup_task,
-		'karantina_produksi' : karantina_produksi,
-		'karantina_qc' : karantina_qc,
-		"unpack_status" : unpack_status
-		}
+	# 	cup_task = ProductionDiv.objects.filter(cupping=False).count()
+	# 	karantina_produksi = ProductionDiv.objects.filter(production_check_pass=False).count()
+	# 	karantina_qc = ProductionDiv.objects.filter(qc_check_pass=False).count()
+	# 	unpack_status = ProductionDiv.objects.filter(pack_status=False).count()
+	# 	context = {
+	# 	'cup_task': cup_task,
+	# 	'karantina_produksi' : karantina_produksi,
+	# 	'karantina_qc' : karantina_qc,
+	# 	"unpack_status" : unpack_status
+	# 	}
 
-		return super().changelist_view(request, extra_context=context)
+	# 	return super().changelist_view(request, extra_context=context)
 
 	
 
