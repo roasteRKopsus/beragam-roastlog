@@ -244,7 +244,7 @@ class BlendReport(models.Model):
 	catatan_laporan = models.TextField(max_length=500, default='-')
 	
 	def count_input (self):
-		data_input = ProductionDiv.objects.filter(blend_production_date=self)
+		data_input = ProductionDiv.objects.filter(production_date=self)
 		return len(data_input)
 
 	def total_weight (self):
