@@ -351,14 +351,14 @@ class ProductionDivAdmin(ExportActionMixin, admin.ModelAdmin):
 
 	# readonly_fields = (
 	# 'id',)
-	search_fields = (
+	search_fields = [
 		'production_date__blend_name_bulanan'
-	)
+	]
 	# list_editable = ['cupping']
 	list_filter = (
 		('initial_create',PastDateRangeFilter),
 		('roast_date', PastDateRangeFilter),
-		'production_date',
+		'production_date__blend_name_bulanan',
 		# ('production_date__blend_name_bulanan__blend_name'),
 		'mesin',
 		'komposisi',
@@ -442,18 +442,6 @@ class BlendReportAdmin(ExportActionMixin, admin.ModelAdmin):
 	exclude = ('roasted_material',)
 
 	resource_class = BlendReportResource
-
-	# def changelist_view(self, request, extra_content=None):
-	
-	# 	chart_data = []
-	# 	return super().changelist_view(request, extra_context=extra_context)
-
-
-
-
-
-
-	
 
 
 
