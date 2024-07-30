@@ -234,7 +234,7 @@ class BlendReport(models.Model):
 	uom = 'kg'
 	mesin = (('a', 'fr15'), ('b', 'fr25'),('c','fr15-25'))
 	masuk =(('a','pagi'),('b','siang'))
-	production_date = models.DateField()
+	blend_production_date = models.DateField()
 	machine = MultiSelectField(choices=mesin,)
 	shift = MultiSelectField(choices=masuk)
 	blend_name = models.ForeignKey(RunTimeStock, on_delete=models.PROTECT)
@@ -244,11 +244,11 @@ class BlendReport(models.Model):
 	catatan_laporan = models.TextField(max_length=500, default='-')
 	
 	def count_input (self):
-		data_input = ProductionDiv.objects.filter(production_date=self)
+		data_input = ProductionDiv.objects.filter(blend_production_date=self)
 		return len(data_input)
 
 	def total_weight (self):
-		sum_weight = ProductionDiv.objects.filter(production_date=self)
+		sum_weight = ProductionDiv.objects.filter(blend_production_date=self)
 		initial_weight = 0
 		for weight in sum_weight:
 			initial_weight += weight.weight
@@ -260,7 +260,7 @@ class BlendReport(models.Model):
 		return round(pack_forecast,2)
 
 	def agtron_average(self):
-		agtron_val = ProductionDiv.objects.filter(production_date=self)
+		agtron_val = ProductionDiv.objects.filter(blend_production_date=self)
 		agtron_avg = 0
 		for agtron in agtron_val:
 			agtron_avg += agtron.agtron_meter
@@ -268,10 +268,10 @@ class BlendReport(models.Model):
 		return round(value, 2)
 
 	def blend_code(self):
-		return "{0}/{1}/{2}/{3}/{4}".format(self.blend_name,self.machine,self.shift,self.pack_size,self.production_date)
+		return "{0}/{1}/{2}/{3}/{4}".format(self.blend_name,self.machine,self.shift,self.pack_size,self._blendproduction_date)
 
 	def readable_blend(self):
-		return ('{0} [{1}]'.format(self.production_date, self.blend_name_bulanan))
+		return ('{0} [{1}]'.format(self._blend_production_date, self.blend_name_bulanan))
 
 	total_weight = property(total_weight)
 	blend_recorded = property(count_input)
@@ -334,7 +334,7 @@ class ProductionDiv(models.Model):
 	kg = ('kg')
 	mesin = (('fr15','fr15'), ('fr25','fr25'))
 	masuk= (('Pagi','Pagi'),('Siang', 'Siang'))
-	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'production_date': date}  )
+	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'blend_production_date': date}  )
 	roast_date = models.DateField(default=date)
 	nomor_set = models.PositiveIntegerField(max_length=50,)
 	roasted_material = models.ManyToManyField(Roaster,limit_choices_to=blend_packing_config_choice )
