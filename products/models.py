@@ -401,7 +401,7 @@ class Roaster(models.Model):
 	post_harvest = (('dry', 'dry'),('wet','wet'))
 	nama_biji = (('cianjur','cianjur'),('ciwidey','ciwidey'))
 	warna_biji = (('wajar','wajar'), ('tidak wajar', 'tidak wajar'))
-	masuk= (('Pagi','Pagi'),('Siang', 'Siang'))
+	masuk= (('Pagi','Pagi'),('Siang', 'Siang'),('Malam', 'Malam'))
 	roast_date = models.DateField(auto_now_add=True)
 	beans_name = models.ForeignKey(BeansGudang, on_delete=models.CASCADE, limit_choices_to={'show_this': True})
 	minggu = models.CharField(max_length=1, choices=week, default='1', help_text='SERING TERJADI KESALAHAN MOHON DIPERHATIKAN')
@@ -547,7 +547,7 @@ class PengambilanGreenbean(models.Model):
 
 	UOM = 'kg'
 	machine = (('froco-15', 'froco-15'), ('froco-25', 'froco-25'),('non-machine','non-machine'))
-	masuk= (('Pagi','Pagi'),('Siang', 'Siang'))
+	masuk= (('Pagi','Pagi'),('Siang', 'Siang'),('Malam', 'Malam'))
 	tanggal = models.DateTimeField()
 	beans_name = models.ForeignKey(BeansGudang, on_delete=models.CASCADE, limit_choices_to = {'show_this' : True})
 	blend_name = models.ForeignKey(BlendName, on_delete=models.PROTECT, default=1, limit_choices_to = {'show_this' : True})

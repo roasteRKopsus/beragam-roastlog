@@ -233,7 +233,7 @@ class BlendReport(models.Model):
 
 	uom = 'kg'
 	mesin = (('a', 'fr15'), ('b', 'fr25'),('c','fr15-25'))
-	masuk =(('a','pagi'),('b','siang'))
+	masuk =(('a','pagi'),('b','siang'),('Malam', 'Malam'))
 	blend_production_date = models.DateField()
 	machine = MultiSelectField(choices=mesin,)
 	shift = MultiSelectField(choices=masuk)
@@ -333,7 +333,7 @@ class ProductionDiv(models.Model):
 
 	kg = ('kg')
 	mesin = (('fr15','fr15'), ('fr25','fr25'))
-	masuk= (('Pagi','Pagi'),('Siang', 'Siang'))
+	masuk= (('Pagi','Pagi'),('Siang', 'Siang'),('Malam', 'Malam'))
 	production_date= models.ForeignKey(BlendReport, on_delete=models.CASCADE, limit_choices_to={'blend_production_date': date}  )
 	roast_date = models.DateField(default=date)
 	nomor_set = models.PositiveIntegerField(max_length=50,)
