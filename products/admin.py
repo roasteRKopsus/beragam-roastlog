@@ -65,6 +65,11 @@ class RoasterResource(resources.ModelResource):
 		column_name='beans_name',
 		widget=ForeignKeyWidget(BeansGudang, 'beans_name')
 		)
+	BlendName_name = fields.Field(
+		attribute='blend_name',
+		column_name='blend_name',
+		widget=ForeignKeyWidget(BlendName, 'blend_name')
+		)
 	mesin = fields.Field(attribute='mesin')
 	shift = fields.Field(attribute='shift')
 	process = fields.Field(attribute='process')
