@@ -223,7 +223,7 @@ class RunTimeStockAdmin(ExportActionMixin, admin.ModelAdmin):
 
 	
 	list_filter = (
-		'blend_name',
+		'blend_name__nama_blend',
 		'pack_size',
 		)
 	
